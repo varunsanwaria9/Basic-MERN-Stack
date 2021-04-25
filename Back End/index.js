@@ -29,5 +29,5 @@ const employeeAPI = require('./controllers/employeeAPI_promise.js');
 //USE URL /emp - route to studentController 
 app.use('/emp', employeeAPI);
 
-// START THE EXPRESS SERVER. 4500 is the PORT NUMBER
-app.listen(4500, () => console.log('EXPRESS Server Started at Port No: 4500'));
+// START THE EXPRESS SERVER. 3500 is the PORT NUMBER
+app.listen(3500, () => console.log('EXPRESS Server Started at Port No: 3500'));
