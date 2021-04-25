@@ -14,27 +14,21 @@ function Registration() {
     const handleSubmit = (evt) => {
         evt.preventDefault();
         console.log(`Form submitted:`);
-        console.log(`NAME: ${registerObj.name}`);
+        console.log(`NAME: ${registerObj}`);
         console.log(`EMAIL: ${registerObj.email}`);
 
-        
         axios.post('http://localhost:4500/emp/register', registerObj)
             .then(res => {
                 console.log(res.data)
                 setMsg('REGISTRATION SUCCESSFUL')
             })
-            .catch(err => {
-                console.log(err)
-                setMsg('INVALID UID OR PASSWORD')
-              })
 
-            setRegisterObj({name:"",email:"",mobile:"",dob:"",password:"",gender:""})
+            setRegisterObj({name:"",email:"",mobile:"",password:""})
 
     }
 
     return (
         <div className="register">
-            <br />
             <form className="register-form" onSubmit={handleSubmit}>
             <span className="register-title">Registration</span>
             <span className="register-errmsg">{msg}</span>

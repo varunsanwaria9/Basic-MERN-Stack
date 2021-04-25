@@ -28,14 +28,10 @@ router.post('/register', (req, res) =>
 //Create Object of Employee Model Class
 // And Receive value from request body and Store value within the Object
                    const empobj = new EmpModel({
-                                 empname: req.body.empname,
-                                 empemail: req.body.empemail,
-                                 empmobile: req.body.empmobile,
-                                 empdob: req.body.empdob,
-                                 emppass: req.body.emppass,
-                                 empgender: req.body.empgender,
-                                 empcountry: req.body.empcountry,
-                                 empaddress: req.body.empaddress,
+                                 empname: req.body.name,
+                                 empemail: req.body.email,
+                                 empmobile: req.body.mobile,
+                                 emppass: req.body.password,
                                  });//CLOSE EmpModel
      //INSERT/SAVE THE RECORD/DOCUMENT
                    empobj.save()
