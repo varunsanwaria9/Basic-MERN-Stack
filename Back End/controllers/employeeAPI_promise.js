@@ -5,7 +5,7 @@ const express = require('express');
 const router = express.Router();
 
 //IMPORT EMPLOYEE MODEL AND BIND IT
-const EmpModel = require('../models/employee_schema(reg1)');
+const EmpModel = require('../models/employee_schema');
 
 // URL :- localhost:4500/emp/register  (USING POSTMAN POST)
 /*
@@ -31,7 +31,7 @@ router.post('/register', (req, res) =>
                                  empname: req.body.name,
                                  empemail: req.body.email,
                                  empmobile: req.body.mobile,
-                                 emppass: req.body.emppass,
+                                 emppass: req.body.password,
                                  });//CLOSE EmpModel
      //INSERT/SAVE THE RECORD/DOCUMENT
                    empobj.save()
@@ -115,7 +115,7 @@ router.get('/', (req, res) =>
 router.post('/logincheck', (req, res) => 
                  {
                     console.log(req.body.empemail)
-                    EmpModel.find({"empemail" : req.body.empemail,"emppass":req.body.emppass})
+                    EmpModel.find({"empemail" : req.body.email,"emppass":req.body.password})
             .then(getsearchdocument => {
               if(getsearchdocument.length >0) 
               {
@@ -132,26 +132,6 @@ router.post('/logincheck', (req, res) =>
           }//CLOSE CALLBACK FUNCTION BODY
          );//CLOSE GET METHOD  
 
-
-//UPDATE DOCUMENT IN MONGODB USING EMAILID
-router.put('/update', (req, res) => 
-            {
-    
-  EmpModel.findOneAndUpdate({"empemail" : req.body.empemail}, 
-                              { $set: {"empmobile":req.body.empmobile,
-							  "emppass": req.body.emppass,							  
-							  } }, { new: true })
-          .then(getupdateddocument => {
-            if(getupdateddocument != null)
-               res.status(200).send('DOCUMENT UPDATED ' + getupdateddocument);  
-            else
-               res.status(404).send('INVALID EMAILID '+ req.body.empemail);
-          }) // CLOSE THEN
-          .catch(err => {
-  return res.status(500).send({message: "DB Problem..Error in UPDATE with id " + req.params.empid });
-          }) // CLOSE CATCH
-                            } //CLOSE CALLBACK FUNCTION Line No 108
-                            ); //CLOSE PUT METHOD Line No 107
 
 
 
