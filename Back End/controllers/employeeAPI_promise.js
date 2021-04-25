@@ -137,6 +137,27 @@ router.post('/logincheck', (req, res) =>
          );//CLOSE GET METHOD  
 
 
+//UPDATE DOCUMENT IN MONGODB USING EMAILID
+router.put('/update', (req, res) => 
+            {
+    
+  EmpModel.findOneAndUpdate({"empemail" : req.body.empemail}, 
+                              { $set: {"empmobile":req.body.empmobile,
+							  "emppass": req.body.emppass,
+							  "empaddress": req.body.empaddress
+							  } }, { new: true })
+          .then(getupdateddocument => {
+            if(getupdateddocument != null)
+               res.status(200).send('DOCUMENT UPDATED ' + getupdateddocument);  
+            else
+               res.status(404).send('INVALID EMAILID '+ req.body.empemail);
+          }) // CLOSE THEN
+          .catch(err => {
+  return res.status(500).send({message: "DB Problem..Error in UPDATE with id " + req.params.empid });
+          }) // CLOSE CATCH
+                            } //CLOSE CALLBACK FUNCTION Line No 108
+                            ); //CLOSE PUT METHOD Line No 107
+
 
 
 //SHOULD BE EXPORTED
