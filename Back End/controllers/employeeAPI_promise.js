@@ -31,7 +31,7 @@ router.post('/register', (req, res) =>
                                  empname: req.body.name,
                                  empemail: req.body.email,
                                  empmobile: req.body.mobile,
-                                 emppass: req.body.password,
+                                 emppass: req.body.emppass,
                                  });//CLOSE EmpModel
      //INSERT/SAVE THE RECORD/DOCUMENT
                    empobj.save()

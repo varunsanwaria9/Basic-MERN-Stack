@@ -7,9 +7,6 @@ const EmployeeSchema = schema_mongoose.Schema(
     empmobile: { type: String },    
     emppass: { type: String },
     }, 
-    {
-       timestamps: true
-    }
-    );
+
 
 module.exports = schema_mongoose.model('emp_schema_collection', EmployeeSchema);
