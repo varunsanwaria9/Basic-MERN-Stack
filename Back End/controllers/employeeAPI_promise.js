@@ -5,7 +5,7 @@ const express = require('express');
 const router = express.Router();
 
 //IMPORT EMPLOYEE MODEL AND BIND IT
-const EmpModel = require('../models/employee_schema');
+const EmpModel = require('../models/employee_schema(reg1)');
 
 // URL :- localhost:4500/emp/register  (USING POSTMAN POST)
 /*
@@ -30,13 +30,9 @@ router.post('/register', (req, res) =>
                    const empobj = new EmpModel({
                                  empname: req.body.empname,
                                  empemail: req.body.empemail,
-                                 empmobile: req.body.empmobile,
-                                 empdob: req.body.empdob,
-                                 emppass: req.body.emppass,
-                                 empgender: req.body.empgender,
-                                 empcountry: req.body.empcountry,
-                                 empaddress: req.body.empaddress,
-                                 });//CLOSE EmpModel
+                                 empmobile: req.body.empmobile,                                 
+                                 emppass: req.body.emppass, 
+								 });//CLOSE EmpModel
      //INSERT/SAVE THE RECORD/DOCUMENT
                    empobj.save()
                          .then(inserteddocument => {
@@ -143,8 +139,7 @@ router.put('/update', (req, res) =>
     
   EmpModel.findOneAndUpdate({"empemail" : req.body.empemail}, 
                               { $set: {"empmobile":req.body.empmobile,
-							  "emppass": req.body.emppass,
-							  "empaddress": req.body.empaddress
+							  "emppass": req.body.emppass,							  
 							  } }, { new: true })
           .then(getupdateddocument => {
             if(getupdateddocument != null)
