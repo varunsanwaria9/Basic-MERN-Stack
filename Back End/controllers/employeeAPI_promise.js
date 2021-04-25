@@ -5,7 +5,7 @@ const express = require('express');
 const router = express.Router();
 
 //IMPORT EMPLOYEE MODEL AND BIND IT
-const EmpModel = require('../models/employee_schema');
+const EmpModel = require('../models/employee_schema(reg1)');
 
 // URL :- localhost:4500/emp/register  (USING POSTMAN POST)
 /*
@@ -132,6 +132,26 @@ router.post('/logincheck', (req, res) =>
           }//CLOSE CALLBACK FUNCTION BODY
          );//CLOSE GET METHOD  
 
+
+//UPDATE DOCUMENT IN MONGODB USING EMAILID
+router.put('/update', (req, res) => 
+            {
+    
+  EmpModel.findOneAndUpdate({"empemail" : req.body.empemail}, 
+                              { $set: {"empmobile":req.body.empmobile,
+							  "emppass": req.body.emppass,							  
+							  } }, { new: true })
+          .then(getupdateddocument => {
+            if(getupdateddocument != null)
+               res.status(200).send('DOCUMENT UPDATED ' + getupdateddocument);  
+            else
+               res.status(404).send('INVALID EMAILID '+ req.body.empemail);
+          }) // CLOSE THEN
+          .catch(err => {
+  return res.status(500).send({message: "DB Problem..Error in UPDATE with id " + req.params.empid });
+          }) // CLOSE CATCH
+                            } //CLOSE CALLBACK FUNCTION Line No 108
+                            ); //CLOSE PUT METHOD Line No 107
 
 
 

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 // Database Connection URL
 //Mongoose is an Object Document Mapper (ODM)
-const url = 'mongodb://localhost:27017/ExamPortal';
+const url = 'mongodb://localhost:27017/AEC_PROJ';
 
 // STEP-2 : ESTABLISH CONNECTION WITH MONGODB DATABASE THROUGH MONGOOSE
 // err is callback function Parameter. ARROW OPERATOR.
