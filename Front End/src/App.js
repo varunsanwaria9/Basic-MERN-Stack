@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Login from './components/Login';
+import Registration from './components/Registration';
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
         </Switch>
       </Router> */}
       <Login />
+      <br/>
+      <Registration />
     </div>
   );
 }
