@@ -10,7 +10,7 @@ import AdminUpdate from './components/AdminUpdate';
 function App() {
   return (
     <div className="App">
-      <Router>
+      {/*<Router>
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/reg" component={Registration} />
