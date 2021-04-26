@@ -5,6 +5,7 @@ import './App.css';
 // import Registration from './components/Registration';
 import Admin from './components/Admin';
 // import UserHome from './components/UserHome';
+import AdminUpdate from './components/AdminUpdate';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           {/* <Route component={NoMatch} /> */}
         {/* </Switch> */}
       {/* </Router>  */}
-      <Admin />
+      <AdminUpdate />
     </div>
   );
 }

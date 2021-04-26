@@ -14,7 +14,7 @@ function Registration() {
     const handleSubmit = (evt) => {
         evt.preventDefault();
         console.log(`Form submitted:`);
-        console.log(`NAME: ${registerObj}`);
+        console.log(`NAME: ${registerObj.name}`);
         console.log(`EMAIL: ${registerObj.email}`);
 
         axios.post('http://localhost:4500/emp/register', registerObj)
