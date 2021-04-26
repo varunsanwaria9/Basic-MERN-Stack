@@ -12,6 +12,22 @@ function AdminUser() {
         console.log(error);
       })
     })
+    
+    const handleClick = event => {
+      if(event.target.dataset.mssg === "Update") console.log("Updating")
+      else{
+        // // eemail = sessionStorage.getItem('')
+        // // axios.delete('http://localhost:4500/emp/remove/' + eemail)
+        // .then(res => {
+        //   console.log(res.data)
+        // })
+        // .catch(err => {
+        //   console.log(err)
+        // })
+
+      }
+    }
+    
     return (
       <div>
         <table className="table table-adminUser">
@@ -31,8 +47,8 @@ function AdminUser() {
               <td>{currentrow.empmobile}</td>
               <td>{currentrow.emppass}</td>
               <td>
-                <button type="button" class="btn btn-primary btn-others">Update</button>
-                <button type="button" class="btn btn-danger btn-others">Delete</button>
+                <button type="button" data-mssg="Update" onClick={handleClick} class="btn btn-primary btn-others">Update</button>
+                <button type="button" data-mssg="Delete" onClick={handleClick} class="btn btn-danger btn-others">Delete</button>
               </td>
             </tr>
             )})}
