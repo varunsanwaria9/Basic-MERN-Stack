@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import "./CSS/Login.css"
 
-function Login() {
+function Login(props) {
     const [loginObj , setLoginObj] = useState({email:"",password:""})
     const [msg , setMsg] = useState("") 
     const changePwd = (evt) => setLoginObj({...loginObj,password:evt.target.value})
@@ -10,23 +10,29 @@ function Login() {
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-    
-        console.log(`EMAIL: ${loginObj.email}`);
-        console.log(`PASS: ${loginObj.password}`);
-    
-        axios.post('http://localhost:4500/emp/logincheck', loginObj)
-          .then(res => {
-            console.log(res.data)
-            sessionStorage.setItem("Key_Veriable", 'USER')
-            sessionStorage.setItem("useremail", res.data[0].empemail)
-            sessionStorage.setItem("username", res.data[0].empname)
-            // props.history.push('/userafterlogin')
-          })
-          .catch(err => {
-            console.log(err)
-            setMsg('INVALID UID OR PASSWORD')
-          })
-        setLoginObj({email:"",password:""})
+        if((loginObj.email === "admin") && (loginObj.password === "admin")){
+            sessionStorage.setItem("Key_Veriable", 'ADMIN')
+            setMsg('WELCOME ADMIN')
+            props.history.push('/adminafterlogin')
+        }
+        else{
+                console.log(`EMAIL: ${loginObj.email}`);
+                console.log(`PASS: ${loginObj.password}`);
+            
+                axios.post('http://localhost:4500/emp/logincheck', loginObj)
+                .then(res => {
+                    console.log(res.data)
+                    sessionStorage.setItem("Key_Veriable", 'USER')
+                    sessionStorage.setItem("useremail", res.data[0].empemail)
+                    sessionStorage.setItem("username", res.data[0].empname)
+                    props.history.push('/userafterlogin')
+                })
+                .catch(err => {
+                    console.log(err)
+                    setMsg('INVALID UID OR PASSWORD')
+                })
+                setLoginObj({email:"",password:""})
+        }
     }
 
     return (
