@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import "./CSS/Login.css"
 
 function Login(props) {
     const [loginObj , setLoginObj] = useState({email:"",password:""})
     const [msg , setMsg] = useState("") 
+
     const changePwd = (evt) => setLoginObj({...loginObj,password:evt.target.value})
     const changeEmail = (evt) => setLoginObj({...loginObj,email:evt.target.value})
 
@@ -35,6 +37,9 @@ function Login(props) {
         }
     }
 
+    let history = useHistory()
+    const regRedirect = () => history.push("/reg")
+
     return (
         <div className="login">
             <form className="login-form" onSubmit={handleSubmit}>
@@ -55,7 +60,7 @@ function Login(props) {
                     onChange={changePwd}
                     required/>
                 <button type="submit" className="btn btn-primary">Log In</button>
-                <span className="login-reg">Not a user?<button>Sign Up</button></span>
+                <span className="login-reg">Not a user?<button onClick={regRedirect}>Sign Up</button></span>
             </form>
         </div>
     )

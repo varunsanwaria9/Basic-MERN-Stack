@@ -20,7 +20,7 @@ function App() {
           <Route path="/admin" component={AdminExam} />
           <Route path="/adminuser" component={AdminUser} />
           <Route path="/adminUpdate/:email" component={AdminUpdate} />
-          <Route path="/userRegister" component={UserExamRegister} />
+          <Route path="/userRegister/:examName" component={UserExamRegister} />
         </Switch>
       </Router> 
     </div>

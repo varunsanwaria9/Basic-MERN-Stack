@@ -18,8 +18,8 @@ function AdminUser() {
     
     let history = useHistory()
     
-    const handleClick = event => {
-      let values = event.target.dataset.mssg.split("_")
+    const handleClick = evt => {
+      let values = evt.target.dataset.mssg.split("_")
       if(values[1] === "Update"){
         history.push(`/adminUpdate/${values[0]}`)
       }

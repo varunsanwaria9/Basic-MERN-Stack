@@ -3,7 +3,7 @@ import axios from 'axios'
 import './CSS/UserExamRegister.css';
 
 
-function UserExamRegister() {
+function UserExamRegister(props) {
   const [regExamObj,setRegExamObj] = useState({name:"",email:"",mobile:"",dob:"",clgName:"",examName:"Hack for a cause"})
   
   const changeName = (evt) => setRegExamObj({...regExamObj,name:evt.target.value})
@@ -12,6 +12,8 @@ function UserExamRegister() {
   const changeDob = (evt) => setRegExamObj({...regExamObj,dob:evt.target.value})
   const changeClgName = (evt) => setRegExamObj({...regExamObj,clgName:evt.target.value})
   
+  const examName = props.match.params.examName
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log(`Student Registered 
@@ -26,7 +28,7 @@ function UserExamRegister() {
   return (
     <div>
       <div className="examRegister-left">
-        <span className="examregistration-title">EXAM NAME</span>
+        <span className="examregistration-title">{examName}</span>
         <div className="examregistration-other">
           <span className="examregistration-questionLabel"><strong>Number Of Question:</strong>30 Questions</span>
         </div>

@@ -13,21 +13,21 @@ function AdminExam() {
                     <button>Logout</button>
                 </div>
             </nav>
-            <div className>
+            <div className="examdetails">
                 <div>
-                    <span>2nd Semester</span>
+                    <span>Apex2021 Challenge</span>
                     <button>View Details</button>
                 </div>
                 <div>
-                    <span>4nd Semester</span>
+                    <span>Code for Cause</span>
                     <button>View Details</button>
                 </div>
                 <div>
-                    <span>6nd Semester</span>
+                    <span>May Long Challenge</span>
                     <button>View Details</button>
                 </div>
                 <div>
-                    <span>8nd Semester</span>
+                    <span>Weekly Challenge#21</span>
                     <button>View Details</button>
                 </div>
             </div>

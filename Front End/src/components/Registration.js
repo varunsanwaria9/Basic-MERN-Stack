@@ -48,8 +48,8 @@ function Registration() {
                 <input type="password" value={registerObj.password} className="register-input"
                     onChange={changePwd} placeholder="Enter Password"
                     required />
-                <button type="submit" className="btn btn-primary register-btn">Register</button>
-                <span className="register-reg">Already </span>
+                <button type="submit" className="btn btn-primary">Register</button>
+                <span className="register-reg">Already a user?<button>Sign In</button></span>
             </form>
         </div>
     )
