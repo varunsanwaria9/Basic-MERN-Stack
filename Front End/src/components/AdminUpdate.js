@@ -25,19 +25,16 @@ function AdminUpdate(props) {
             .catch(err => console.log(err))
 
             setadminUpObj({name:"",email:"",mobile:"",password:""})
-
     }
 
     //Similar to componentDidMount and componentDidUpdate
     useEffect(() => {
-        let emailid = sessionStorage.getItem('useremail')
-        if (emailid == null)
-            emailid = props.email
+        let emailid = props.match.params.email
         axios.get('http://localhost:4500/emp/search/' + emailid)
             .then(response => {
-                console.log(response.data)
-                const { adminUpObj } = response.data[0]
-                setadminUpObj({name:adminUpObj.name,email:adminUpObj.email,mobile:adminUpObj.mobile,password:adminUpObj.password})
+                let tempObj = response.data[0]
+                console.log(tempObj)
+                setadminUpObj({name:`${tempObj.empname}`,email:`${tempObj.empemail}`,mobile:`${tempObj.empmobile}`,password:`${tempObj.emppass}`})
             })
             .catch((error) => {
                 console.log(error);
@@ -47,7 +44,7 @@ function AdminUpdate(props) {
     return (
         <div className="adminUp">
         <form className="adminUp-form" onSubmit={handleSubmit}>
-        <span className="adminUp-title">ADMIN PROFILE UPDATE</span>
+        <span className="adminUp-title">PROFILE UPDATE</span>
         <span className="adminUp-errmsg">{msg}</span>
         <label>Name</label>
             <input type="text" value={adminUpObj.name} className="adminUp-input"
@@ -64,7 +61,7 @@ function AdminUpdate(props) {
             <label>Password</label>
             <input type="password" value={adminUpObj.password} className="adminUp-input"
                 onChange={changePwd} required />
-            <button type="submit" className="btn btn-primary adminUp-btn">UPDATE PROFILE</button>
+            <button type="submit" className="btn btn-primary">UPDATE PROFILE</button>
             <span className="adminUp-reg"></span>
         </form>
     </div>

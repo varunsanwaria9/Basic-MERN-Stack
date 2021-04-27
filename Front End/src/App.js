@@ -4,22 +4,21 @@ import './App.css';
 import Login from './components/Login';
 import Registration from './components/Registration';
 import Admin from './components/Admin';
-// import UserHome from './components/UserHome';
+import UserHome from './components/UserHome';
 import AdminUpdate from './components/AdminUpdate';
 
 function App() {
   return (
     <div className="App">
-      {/*<Router>
+      <Router>
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/reg" component={Registration} />
           <Route path="/userafterlogin" component={UserHome} />
           <Route path="/admin" component={Admin} />
-          {/* <Route component={NoMatch} /> */}
-        {/* </Switch> */}
-      {/* </Router>  */}
-      <AdminUpdate />
+          <Route path="/adminUpdate/:email" component={AdminUpdate} />
+        </Switch>
+      </Router> 
     </div>
   );
 }

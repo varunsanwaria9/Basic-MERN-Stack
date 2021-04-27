@@ -1,7 +1,8 @@
 import React, { useState , useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 
-function AdminUser() {
+function AdminUser(props) {
     const [emplist, setEmpList] = useState([]);
     useEffect(()=> {
         axios.get('http://localhost:4500/emp')
@@ -13,17 +14,22 @@ function AdminUser() {
       })
     })
     
+    let history = useHistory()
+    
     const handleClick = event => {
-      if(event.target.dataset.mssg === "Update") console.log("Updating")
+      let values = event.target.dataset.mssg.split("_")
+      if(values[1] === "Update"){
+        history.push(`/adminUpdate/${values[0]}`)
+      }
       else{
-        // // eemail = sessionStorage.getItem('')
-        // // axios.delete('http://localhost:4500/emp/remove/' + eemail)
-        // .then(res => {
-        //   console.log(res.data)
-        // })
-        // .catch(err => {
-        //   console.log(err)
-        // })
+        let eemail = values[0]
+        axios.delete('http://localhost:4500/emp/remove/' + eemail)
+        .then(res => {
+          console.log(res.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
 
       }
     }
@@ -47,8 +53,8 @@ function AdminUser() {
               <td>{currentrow.empmobile}</td>
               <td>{currentrow.emppass}</td>
               <td>
-                <button type="button" data-mssg="Update" onClick={handleClick} class="btn btn-primary btn-others">Update</button>
-                <button type="button" data-mssg="Delete" onClick={handleClick} class="btn btn-danger btn-others">Delete</button>
+                <button type="button" data-mssg={`${currentrow.empemail}_Update`}  onClick={handleClick} class="btn btn-primary btn-others">Update</button>
+                <button type="button" data-mssg={`${currentrow.empemail}_Delete`} onClick={handleClick} class="btn btn-danger btn-others">Delete</button>
               </td>
             </tr>
             )})}
