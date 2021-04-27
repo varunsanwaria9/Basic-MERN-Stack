@@ -16,7 +16,6 @@ class Admin extends Component{
                     <button>Logout</button>
                 </div>
             </nav>   
-            <AdminExam />
         </div>
     )}
 }

@@ -1,6 +1,8 @@
 import React, { useState , useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory,Link } from 'react-router-dom'
 import axios from 'axios'
+import "./CSS/Admin.css"
+
 
 function AdminUser() {
     const [emplist, setEmpList] = useState([]);
@@ -36,6 +38,14 @@ function AdminUser() {
     
     return (
       <div>
+        <nav className="admin-navbar">
+          <p>Exam Register</p>
+          <div className="admin-right">
+              <Link to="/admin"><button>Exam</button></Link>
+              <Link to="/adminuser"><button>Users</button></Link>
+              <button>Logout</button>
+          </div>
+        </nav>   
         <table className="table table-adminUser">
           <thead className="thead-dark"> 
             <tr>
