@@ -55,7 +55,7 @@ function Login(props) {
                     onChange={changePwd}
                     required/>
                 <button type="submit" className="btn btn-primary">Log In</button>
-                <span className="login-reg"></span>
+                <span className="login-reg">Not a user?<button>Sign Up</button></span>
             </form>
         </div>
     )

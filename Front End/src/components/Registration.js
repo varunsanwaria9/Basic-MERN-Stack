@@ -36,23 +36,20 @@ function Registration() {
                 <input type="text" value={registerObj.name} className="register-input"
                     onChange={changeName} placeholder="Enter Name"
                     required />
-                <br /><br />
                 <label>Email</label>
                 <input type="email" value={registerObj.email} className="register-input"
                     onChange={changeEmail} placeholder="Enter Email"
                     required />
-                <br /><br />
                 <label>Mobile Number</label>
                 <input type="number" value={registerObj.mobile} className="register-input"
                     onChange={changeMobile} placeholder="Enter Mobile No"
                     required />
-                <br /><br />
                 <label>Password</label>
                 <input type="password" value={registerObj.password} className="register-input"
                     onChange={changePwd} placeholder="Enter Password"
                     required />
                 <button type="submit" className="btn btn-primary register-btn">Register</button>
-                <span className="register-reg"></span>
+                <span className="register-reg">Already </span>
             </form>
         </div>
     )

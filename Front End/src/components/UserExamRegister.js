@@ -4,7 +4,7 @@ import './CSS/UserExamRegister.css';
 
 
 function UserExamRegister() {
-  const [regExamObj,setRegExamObj] = useState({name:"",email:"",mobile:"",dob:"",clgName:""})
+  const [regExamObj,setRegExamObj] = useState({name:"",email:"",mobile:"",dob:"",clgName:"",examName:"Hack for a cause"})
   
   const changeName = (evt) => setRegExamObj({...regExamObj,name:evt.target.value})
   const changeEmail = (evt) => setRegExamObj({...regExamObj,email:evt.target.value})
