@@ -5,11 +5,15 @@ const express = require('express');
 const router = express.Router();
 
 //IMPORT EMPLOYEE MODEL AND BIND IT
-const EmpModel = require('../models/employee_schema(reg1)');
+const EmpModel = require('../models/employee_schema_reg1');
+
+const EmpModel2 = require('../models/employee_schema_reg2');
 
 // URL :- localhost:4500/emp/register  (USING POSTMAN POST)
 // post is used to INSERT DOCUMENT/RECORD
 // CALLBACK using lambda 
+
+//for normal user register
 router.post('/register', (req, res) => 
                  {
                     
@@ -19,7 +23,7 @@ router.post('/register', (req, res) =>
                                  empname: req.body.name,
                                  empemail: req.body.email,
                                  empmobile: req.body.mobile,
-                                 emppass: req.body.password
+                                 emppass: req.body.password,
                                  });//CLOSE EmpModel
      //INSERT/SAVE THE RECORD/DOCUMENT
                    empobj.save()
@@ -32,10 +36,47 @@ router.post('/register', (req, res) =>
                             }//CLOSE CALLBACK FUNCTION BODY Line 27
                             );//CLOSE POST METHOD Line 26
 
+//for exam register
+router.post('/examregister', (req, res) => 
+                 {
+                    
+//Create Object of Employee Model Class
+// And Receive value from request body and Store value within the Object
+                   const empobj2 = new EmpModel2({					   
+                                 empname: req.body.name,
+                                 empemail: req.body.email,
+                                 empmobile: req.body.mobile,
+                                 empdob: req.body.dob,                                 
+                                 empclgName: req.body.clgName,                                                                 
+								 empexamName: req.body.examName,
+                                 });//CLOSE EmpModel2
+     //INSERT/SAVE THE RECORD/DOCUMENT
+                   empobj2.save()
+                         .then(inserteddocument => {
+    res.status(200).send('DOCUMENT INSERED IN MONGODB DATABASE' +'<br\>'+ inserteddocument);
+                               })//CLOSE THEN
+                         .catch(err =>{
+    res.status(500).send({ message: err.message || 'Error in Employee Save '})
+                               });//CLOSE CATCH
+                            }//CLOSE CALLBACK FUNCTION BODY Line 27
+                            );//CLOSE POST METHOD Line 26
+							
+router.get('/', (req, res) => 
+                {
+                EmpModel2.find()
+                          .then( getalldocumentsfrommongodb => {
+    res.status(200).send(getalldocumentsfrommongodb);
+                          }) //CLOSE THEN
+                          .catch(err =>{
+    res.status(500).send({ message: err.message || 'Error in Fetch Member '})
+                          });//CLOSE CATCH
+                } //CLOSE CALLBACK FUNCTION BODY Line 110      
+          );//CLOSE GET METHOD Line 109  
+
+
 // => localhost:4500/emp/remove/30     (USING POSTMAN DELETE)
 //DELETE A DOCUMENT FROM MONGODB USING EMPID
 //EmpModel.findOneAndRemove({"empid" : parseInt(req.params.empid)})
-
 // => localhost:4500/emp/remove/abc@gmail.com     (USING POSTMAN DELETE)
 //DELETE A DOCUMENT FROM MONGODB USING EMAILID
 router.delete('/remove/:emailid', (req, res) =>
