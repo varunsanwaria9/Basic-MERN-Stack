@@ -5,21 +5,9 @@ const express = require('express');
 const router = express.Router();
 
 //IMPORT EMPLOYEE MODEL AND BIND IT
-const EmpModel = require('../models/employee_schema');
+const EmpModel = require('../models/employee_schema(reg1)');
 
 // URL :- localhost:4500/emp/register  (USING POSTMAN POST)
-/*
-{
-  "empname": "Chandan",
-  "empemail": "chan@gmail.com",
-  "empmobile": "9831125144",
-  "empdob": "05/09/1984",
-  "emppass": "abcd",
-  "empgender": "Male",
-  "empcountry": "India",
-  "empaddress": "Kol",
-}
-*/
 // post is used to INSERT DOCUMENT/RECORD
 // CALLBACK using lambda 
 router.post('/register', (req, res) => 
@@ -107,14 +95,14 @@ router.get('/', (req, res) =>
     res.status(200).send(getalldocumentsfrommongodb);
                           }) //CLOSE THEN
                           .catch(err =>{
-    res.status(500).send({ message: err.message || 'Error in Fetch Employee '})
+    res.status(500).send({ message: err.message || 'Error in Fetch Member '})
                           });//CLOSE CATCH
                 } //CLOSE CALLBACK FUNCTION BODY Line 110      
           );//CLOSE GET METHOD Line 109  
 
 router.post('/logincheck', (req, res) => 
                  {
-                    console.log(req.body.empemail)
+                    console.log(req.body.email)
                     EmpModel.find({"empemail" : req.body.email,"emppass":req.body.password})
             .then(getsearchdocument => {
               if(getsearchdocument.length >0) 
@@ -134,16 +122,15 @@ router.post('/logincheck', (req, res) =>
 
 router.put('/update', (req, res) => 
 {
- EmpModel.findOneAndUpdate({"empemail" : req.body.empemail}, 
-                           { $set: {"empmobile":req.body.empmobile,
-             "emppass": req.body.emppass,
-             "empaddress": req.body.empaddress
+ EmpModel.findOneAndUpdate({"empemail" : req.body.email}, 
+                           { $set: {"empmobile":req.body.mobile,
+             "emppass": req.body.password             
              } }, { new: true })
        .then(getupdateddocument => {
          if(getupdateddocument != null)
             res.status(200).send('DOCUMENT UPDATED ' + getupdateddocument);  
          else
-            res.status(404).send('INVALID EMAILID '+ req.body.empemail);
+            res.status(404).send('INVALID EMAILID '+ req.body.email);
        }) // CLOSE THEN
        .catch(err => {
 return res.status(500).send({message: "DB Problem..Error in UPDATE with id " + req.params.empid });
