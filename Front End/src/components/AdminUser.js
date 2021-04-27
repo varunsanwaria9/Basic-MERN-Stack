@@ -2,7 +2,7 @@ import React, { useState , useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 
-function AdminUser(props) {
+function AdminUser() {
     const [emplist, setEmpList] = useState([]);
     useEffect(()=> {
         axios.get('http://localhost:4500/emp')

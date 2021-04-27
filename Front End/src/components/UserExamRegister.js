@@ -1,5 +1,5 @@
 import React,{ useState } from 'react';
-import './UserExamRegister.css';
+import './CSS/UserExamRegister.css';
 
 
 function UserExamRegister() {

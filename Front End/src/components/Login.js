@@ -54,7 +54,7 @@ function Login(props) {
                     value={loginObj.password}
                     onChange={changePwd}
                     required/>
-                <button type="submit" className="btn btn-primary login-btn">Log In</button>
+                <button type="submit" className="btn btn-primary">Log In</button>
                 <span className="login-reg"></span>
             </form>
         </div>
