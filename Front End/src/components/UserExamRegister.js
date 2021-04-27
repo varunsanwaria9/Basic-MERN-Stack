@@ -1,4 +1,5 @@
 import React,{ useState } from 'react';
+import axios from 'axios'
 import './CSS/UserExamRegister.css';
 
 
@@ -13,7 +14,14 @@ function UserExamRegister() {
   
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log(regExamObj);
+    console.log(`Student Registered 
+          Name: ${regExamObj.name}
+          Email: ${regExamObj.email}`)
+    axios.post('http://localhost:4500/emp/examregister',regExamObj)
+      .then(res => {
+        console.log(res.data);
+      })
+    setRegExamObj({name:"",email:"",mobile:"",dob:"",clgName:""})
   }
   return (
     <div>
