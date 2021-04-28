@@ -4,15 +4,14 @@ import './CSS/UserExamRegister.css';
 
 
 function UserExamRegister(props) {
-  const [regExamObj,setRegExamObj] = useState({name:"",email:"",mobile:"",dob:"",clgName:"",examName:"Hack for a cause"})
+  const exam = props.match.params.examName
+  const [regExamObj,setRegExamObj] = useState({name:"",email:"",mobile:"",dob:"",clgName:"",examName:exam})
   
   const changeName = (evt) => setRegExamObj({...regExamObj,name:evt.target.value})
   const changeEmail = (evt) => setRegExamObj({...regExamObj,email:evt.target.value})
   const changeMobile = (evt) => setRegExamObj({...regExamObj,mobile:evt.target.value})
   const changeDob = (evt) => setRegExamObj({...regExamObj,dob:evt.target.value})
-  const changeClgName = (evt) => setRegExamObj({...regExamObj,clgName:evt.target.value})
-  
-  const examName = props.match.params.examName
+  const changeClgName = (evt) => setRegExamObj({...regExamObj,clgName:evt.target.value})  
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -25,10 +24,11 @@ function UserExamRegister(props) {
       })
     setRegExamObj({name:"",email:"",mobile:"",dob:"",clgName:""})
   }
+
   return (
     <div>
       <div className="examRegister-left">
-        <span className="examregistration-title">{examName}</span>
+        <span className="examregistration-title">{exam}</span>
         <div className="examregistration-other">
           <span className="examregistration-questionLabel"><strong>Number Of Question:</strong>30 Questions</span>
         </div>

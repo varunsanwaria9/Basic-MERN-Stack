@@ -49,15 +49,12 @@ function AdminUpdate(props) {
         <label>Name</label>
             <input type="text" value={adminUpObj.name} className="adminUp-input"
                 onChange={changeName} readOnly />
-            <br /><br />
             <label>Email</label>
             <input type="email" value={adminUpObj.email} className="adminUp-input"
                 onChange={changeEmail} readOnly />
-            <br /><br />
             <label>Mobile Number</label>
             <input type="number" value={adminUpObj.mobile} className="adminUp-input"
                 onChange={changeMobile} required />
-            <br /><br />
             <label>Password</label>
             <input type="password" value={adminUpObj.password} className="adminUp-input"
                 onChange={changePwd} required />

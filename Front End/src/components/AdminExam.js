@@ -1,8 +1,24 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 import './CSS/Admin.css'
 
 function AdminExam() {
+    const [apexChallenge,setApexChallenge] = useState([])
+    const [codeCause,setCodeCause] = useState([])
+    const [mayChallenge,setMayChallenge] = useState([])
+    const [weekChallenge,setWeekChallenge] = useState([])
+
+    useEffect(() => {
+        // axios.get('http://localhost:4500/emp/getexams')
+        //     .then(response => {
+        //         console.log(`Object: ${response.data}`)
+        //     })
+        //     .error(err => {
+        //         console.log(err)
+        //     })
+    })
+
     return (
         <div>
             <nav className="admin-navbar">
@@ -10,7 +26,7 @@ function AdminExam() {
                 <div className="admin-right">
                     <Link to="/admin"><button>Exam</button></Link>
                     <Link to="/adminuser"><button>Users</button></Link>
-                    <button>Logout</button>
+                    <Link to="/adminuser"><button>Logout</button></Link>
                 </div>
             </nav>
             <div className="examdetails">

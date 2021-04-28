@@ -43,7 +43,7 @@ function AdminUser() {
           <div className="admin-right">
               <Link to="/admin"><button>Exam</button></Link>
               <Link to="/adminuser"><button>Users</button></Link>
-              <button>Logout</button>
+              <Link to="/logout"><button>logout</button></Link>
           </div>
         </nav>   
         <table className="table table-adminUser">

@@ -1,20 +1,34 @@
-import React from 'react'
+import React , { useState,useEffect }from 'react'
+import axios from 'axios'
 import { useHistory,Link } from 'react-router-dom'
 
 function UserHome() {
+    const [enrolledExam,setEnrolledExam] = useState([])
     const userMail = sessionStorage.getItem('useremail')
     const history = useHistory()
+    
     const examRegRedirect = evt => {
         let examName = evt.target.dataset.mssg
         history.push(`/userRegister/${examName}`)
     }
+
+    useEffect(() => {
+        // axios.get('http://localhost:4500/emp/getusers')
+        //     .then( response => {
+        //         console.log(`Registered: ${response.data}`)
+        //     })
+        //     .error( err => {
+        //         console.log(err)
+        //     })
+    })
+
     return (
         <div>
             <nav className="admin-navbar">
                 <p>Exam Register</p>
                 <div className="admin-right">
                     <Link to={`/adminUpdate/${userMail}`}><button>Update</button></Link>
-                    <button>Logout</button>
+                    <Link to="/logout"><button>Logout</button></Link>
                 </div>
             </nav>
             <div className>

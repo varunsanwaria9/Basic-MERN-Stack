@@ -15,7 +15,7 @@ function Login(props) {
         if((loginObj.email === "admin") && (loginObj.password === "admin")){
             sessionStorage.setItem("Key_Veriable", 'ADMIN')
             setMsg('WELCOME ADMIN')
-            props.history.push('/adminafterlogin')
+            props.history.push('/admin')
         }
         else{
                 console.log(`EMAIL: ${loginObj.email}`);

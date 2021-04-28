@@ -8,6 +8,7 @@ import UserHome from './components/UserHome';
 import AdminUpdate from './components/AdminUpdate';
 import UserExamRegister from './components/UserExamRegister'
 import AdminExam from './components/AdminExam';
+import Logout from './components/Logout';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/adminuser" component={AdminUser} />
           <Route path="/adminUpdate/:email" component={AdminUpdate} />
           <Route path="/userRegister/:examName" component={UserExamRegister} />
+          <Route path="/logout" component={Logout} />
         </Switch>
       </Router> 
     </div>
