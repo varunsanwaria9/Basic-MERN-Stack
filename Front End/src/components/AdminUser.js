@@ -5,8 +5,10 @@ import "./CSS/Admin.css"
 
 
 function AdminUser() {
-    const [emplist, setEmpList] = useState([]);
+  const [emplist, setEmpList] = useState([]);
+  let history = useHistory()
     useEffect(()=> {
+      if(sessionStorage.getItem("Key_Veriable")==="ADMIN"){
         axios.get('http://localhost:4500/emp')
       .then(response => {
         setEmpList(response.data);
@@ -14,9 +16,10 @@ function AdminUser() {
       .catch((error) => {
         console.log(error);
       })
+      }
+      else history.push("/")
     })
     
-    let history = useHistory()
     
     const handleClick = evt => {
       let values = evt.target.dataset.mssg.split("_")

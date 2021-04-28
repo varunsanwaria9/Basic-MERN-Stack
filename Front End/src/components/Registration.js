@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios';
 import "./CSS/Registration.css"
 
@@ -27,8 +28,13 @@ function Registration() {
 
     }
 
+    let history = useHistory()
+    const logRedirect = () => history.push("/")
     return (
         <div className="register">
+            <nav className="login-nav">
+                <p>Exam Register</p>
+            </nav>
             <form className="register-form" onSubmit={handleSubmit}>
             <span className="register-title">Registration</span>
             <span className="register-errmsg">{msg}</span>
@@ -49,7 +55,7 @@ function Registration() {
                     onChange={changePwd} placeholder="Enter Password"
                     required />
                 <button type="submit" className="btn btn-primary">Register</button>
-                <span className="register-reg">Already a user?<button>Sign In</button></span>
+                <span className="login-reg">Already a user?<button onClick={logRedirect}>Sign In</button></span>
             </form>
         </div>
     )

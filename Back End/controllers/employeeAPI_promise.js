@@ -126,6 +126,25 @@ router.get('/search/:emailid', (req, res) =>
           }//CLOSE CALLBACK FUNCTION BODY Line 88
          );//CLOSE GET METHOD Line 87 
 
+router.get('/getusers/:emailid', (req, res) => 
+{
+   EmpModel2.find({"empemail" : req.params.emailid})
+         .then(getsearchdocument => {
+           if(getsearchdocument.length >0) 
+           {
+             res.send(getsearchdocument);
+           }
+           else
+           {
+return res.status(404).send({message: "Note not found with id " + req.params.empid });
+           }
+       }) //CLOSE THEN
+         .catch( err => {
+return res.status(500).send({message: "DB Problem..Error in Retriving with id " + req.params.empid });           
+         })//CLOSE CATCH
+       }//CLOSE CALLBACK FUNCTION BODY Line 88
+      );
+
 // BROWSER URL :- localhost:4500/emp 
 // get IS USED FOR FETCHING DOCUMENTS FROM MONGODB
 // CALLBACK using lambda 

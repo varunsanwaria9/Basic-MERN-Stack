@@ -1,4 +1,5 @@
-import React,{ useState } from 'react';
+import React,{ useState,useEffect } from 'react';
+import {useHistory} from 'react-router-dom'
 import axios from 'axios'
 import './CSS/UserExamRegister.css';
 
@@ -7,6 +8,12 @@ function UserExamRegister(props) {
   const exam = props.match.params.examName
   const [regExamObj,setRegExamObj] = useState({name:"",email:"",mobile:"",dob:"",clgName:"",examName:exam})
   
+  const examDetails = {
+    Apex2021:{question:10,date:"12 May 2021 12pm",duration:"120 Minutes"},
+    CodeforCause:{question:4,date:"20 May 2021 8pm",duration:"180 Minutes"},
+    MayLongChallenge:{question:10,date:"8 May 2021 12pm",duration:"6 Days"},
+    WeeklyChallenge:{question:4,date:"2 May 2021 9am",duration:"180 Minutes"}
+  }
   const changeName = (evt) => setRegExamObj({...regExamObj,name:evt.target.value})
   const changeEmail = (evt) => setRegExamObj({...regExamObj,email:evt.target.value})
   const changeMobile = (evt) => setRegExamObj({...regExamObj,mobile:evt.target.value})
@@ -25,18 +32,23 @@ function UserExamRegister(props) {
     setRegExamObj({name:"",email:"",mobile:"",dob:"",clgName:""})
   }
 
+  let history = useHistory()
+  useEffect(() => {
+    if(sessionStorage.getItem("Key_Veriable")!=="USER") history.push("/")
+  })
+
   return (
     <div>
       <div className="examRegister-left">
-        <span className="examregistration-title">{exam}</span>
+        <span className="examregistration-head">{exam} Challenge</span>
         <div className="examregistration-other">
-          <span className="examregistration-questionLabel"><strong>Number Of Question:</strong>30 Questions</span>
+          <span className="examregistration-Label"><strong>Number Of Question:</strong>{examDetails[exam].question}</span>
         </div>
         <div className="examregistration-other">
-          <span className="examregistration-timeLabel"><strong>Date&Time:</strong>10 May 2021 3:00pm</span>
+          <span className="examregistration-Label"><strong>Date&Time:</strong>{examDetails[exam].date}</span>
         </div>
         <div className="examregistration-other">
-          <span className="examregistration-durationLabel"><strong>Duration:</strong>60 Minutes</span>
+          <span className="examregistration-Label"><strong>Duration:</strong>{examDetails[exam].duration}</span>
         </div>
       </div>
       <div class="examRegister-right">

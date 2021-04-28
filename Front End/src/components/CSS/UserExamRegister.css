@@ -6,6 +6,23 @@
   align-items: center;
   justify-content: center;
 }
+.examregistration-head{
+  width: 80%;
+  font-size: 6vh;
+  font-weight: 600;
+  margin: 2vh 0;
+  text-align: left;
+}
+.examregistration-other{
+  margin: 0.5vh 0;
+  width: 80%;
+  display: flex;
+}
+.examregistration-Label{
+  width: 80%;
+  font-size: 3vh;
+  text-align: left; 
+}
 .examRegister-right{
   width: 50%;
   height: 100vh;

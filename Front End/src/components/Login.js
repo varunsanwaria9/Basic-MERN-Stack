@@ -42,6 +42,9 @@ function Login(props) {
 
     return (
         <div className="login">
+            <nav className="login-nav">
+                <p>Exam Register</p>
+            </nav>
             <form className="login-form" onSubmit={handleSubmit}>
                 <span className="login-title">Login</span>
                 <span className="login-errmsg">{msg}</span>
