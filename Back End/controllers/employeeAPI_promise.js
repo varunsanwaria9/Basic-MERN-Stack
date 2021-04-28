@@ -61,7 +61,7 @@ router.post('/examregister', (req, res) =>
                             }//CLOSE CALLBACK FUNCTION BODY Line 27
                             );//CLOSE POST METHOD Line 26
 							
-router.get('/', (req, res) => 
+router.get('/getexams', (req, res) => 
                 {
                 EmpModel2.find()
                           .then( getalldocumentsfrommongodb => {

@@ -9,16 +9,12 @@ function AdminExam() {
     const [mayChallenge,setMayChallenge] = useState([])
     const [weekChallenge,setWeekChallenge] = useState([])
 
-    useEffect(() => {
-        // axios.get('http://localhost:4500/emp/getexams')
-        //     .then(response => {
-        //         console.log(`Object: ${response.data}`)
-        //     })
-        //     .error(err => {
-        //         console.log(err)
-        //     })
-    })
-
+    useEffect(()=> {
+        axios.get("http://localhost:4500/emp/getexams")
+            .then( response => {
+                console.log(response)
+            })
+    },[])
     return (
         <div>
             <nav className="admin-navbar">
