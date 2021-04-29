@@ -9,6 +9,7 @@ import AdminUpdate from './components/AdminUpdate';
 import UserExamRegister from './components/UserExamRegister'
 import AdminExam from './components/AdminExam';
 import Logout from './components/Logout';
+import InvalidPage from './components/InvalidPage';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/adminUpdate/:email" component={AdminUpdate} />
           <Route path="/userRegister/:examName" component={UserExamRegister} />
           <Route path="/logout" component={Logout} />
+          <Route component={InvalidPage} />
         </Switch>
       </Router> 
     </div>

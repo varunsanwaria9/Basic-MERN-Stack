@@ -1,6 +1,6 @@
 .exam-details{
     width: 100%;
-    height: 92vh;
+    min-height: 92vh;
     top: 8vh;
     left: 0;
     position: absolute;
