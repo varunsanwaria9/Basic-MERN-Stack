@@ -7,7 +7,7 @@ import './CSS/UserExamRegister.css';
 function UserExamRegister(props) {
   const exam = props.match.params.examName
   const [regExamObj,setRegExamObj] = useState({name:"",email:"",mobile:"",dob:"",clgName:"",examName:exam})
-  
+  let history = useHistory()
   const examDetails = {
     Apex2021:{question:10,date:"12 May 2021 12pm",duration:"120 Minutes"},
     CodeforCause:{question:4,date:"20 May 2021 8pm",duration:"180 Minutes"},
@@ -30,9 +30,9 @@ function UserExamRegister(props) {
         console.log(res.data);
       })
     setRegExamObj({name:"",email:"",mobile:"",dob:"",clgName:""})
+    history.push("/userafterlogin")
   }
 
-  let history = useHistory()
   useEffect(() => {
     if(sessionStorage.getItem("Key_Veriable")!=="USER") history.push("/")
   })

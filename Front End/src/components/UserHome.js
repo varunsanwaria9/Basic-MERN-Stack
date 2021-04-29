@@ -34,6 +34,8 @@ function UserHome() {
                             case "WeeklyChallenge":
                                 setWeekly(true)
                                 break
+                            default:
+                                break
                         }
                     }
                 })

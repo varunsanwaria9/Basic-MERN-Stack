@@ -1,27 +1,19 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-function Table(props) {
-    return (
-        <table className="table table-exam">
-            <thead className="thead-dark">
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Mobile</th>
-                    <th>DOB</th>
-                </tr>
-                {props.ele.map((currentrow,idx) => {
-                    return (
-                        <tr>
-                            <td>{currentrow[0]}</td>
-                            <td>{currentrow[1]}</td>
-                            <td>{currentrow[2]}</td>
-                            <td>{currentrow[3]}</td>
-                        </tr>
-                    )})}
-            </thead>
-        </table>
-    )
+export class Table extends Component {
+    render() {
+        if(this.props.examName==this.props.ele.empexamName){
+            return (
+                <tr key={this.props.idx}>
+                 <td>{this.props.ele.empname}</td>
+                 <td>{this.props.ele.empemail}</td>
+                 <td>{this.props.ele.empmobile}</td>
+                 <td>{this.props.ele.empdob}</td>
+             </tr>
+            )
+        }
+        else return null
+    }
 }
 
 export default Table

@@ -126,6 +126,8 @@ router.get('/search/:emailid', (req, res) =>
           }//CLOSE CALLBACK FUNCTION BODY Line 88
          );//CLOSE GET METHOD Line 87 
 
+
+// users exam registered
 router.get('/getusers/:emailid', (req, res) => 
 {
    EmpModel2.find({"empemail" : req.params.emailid})
@@ -144,6 +146,8 @@ return res.status(500).send({message: "DB Problem..Error in Retriving with id " 
          })//CLOSE CATCH
        }//CLOSE CALLBACK FUNCTION BODY Line 88
       );
+
+
 
 // BROWSER URL :- localhost:4500/emp 
 // get IS USED FOR FETCHING DOCUMENTS FROM MONGODB
